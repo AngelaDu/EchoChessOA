@@ -32,10 +32,10 @@ html {
 
 @layer base {
   body {
-    @apply dark:bg-gray-800 bg-light-bg text-black
+    @apply bg-light-bg dark:bg-dark-bg  text-black
     /* @apply text-black */
   }
   p {
-    @apply text-black font-normal
+    @apply text-black font-normal dark:text-dark-text
   }
 }

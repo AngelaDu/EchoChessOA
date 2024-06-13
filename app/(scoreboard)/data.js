@@ -4,7 +4,7 @@ const oneDay = 24 * 60 * 60 * 1000
 export const dummyData = []
 
 const Data = {
-  CAMPAIGN: [
+  campaign: [
     {
       name: "Tommy",
       score: 20,
@@ -41,7 +41,7 @@ const Data = {
       date: new Date(currentDate.getTime() - oneDay * 6 - 456789),
     },
   ],
-  SKIRMISH: [
+  skirmish: [
     {
       name: "mary",
       score: 8,
@@ -58,7 +58,7 @@ const Data = {
       date: new Date(currentDate.getTime() - oneDay * 6 - 456789),
     },
   ],
-  ARENA: [
+  arena: [
     {
       name: "yorick",
       score: 10,

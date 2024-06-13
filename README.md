@@ -37,9 +37,18 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 ## Design choices
-The theme was carried over from echochess.com, no shadows were included to emulate the original vibe
-better!
+The theme was carried over from echochess.com, no shadows were included to emulate the original vibe better!
 
 Some things I would add in the future
 - Icons for the tabs
-- # EchoChessOA
+- For a larger scale project I would create more themes within CSS/Tailwind, and for example a button component
+- Make the chart swipeable to both sides, just seemed a little bit out of scope for this
+- Add a 'loading' page when something is being called
+
+
+Considerations
+- Given the design of echochessOA, it is set at a particular width, this could be changed later depending on the game
+- Decided to make empty a " - ", also thought about leaving it empty 
+- Would like to add preloading later on, IE: load the prev and next page at the curPage so there isn't the lag to load a new page
+- I would put the 'toggle theme' button in the 'settings', so the button is just hanging out for now for the sake of utility
+- On the actual website, there was minimal transitions/animations, so kept it the same here

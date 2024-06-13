@@ -1,5 +1,5 @@
 export const GameModes = {
-  CAMPAIGN: 0,
-  SKIRMISH: 1,
-  ARENA: 2,
+  campaign: 0,
+  skirmish: 1,
+  arena: 2,
 }

@@ -17,15 +17,19 @@ const config: Config = {
       colors: {
         // Define your color palette for dark mode
         dark: {
-          primary: "#333333",
-          secondary: "#444444",
+          bg: "#322928",
+          bgLight: "#58504f",
+          highlight: "#8f323d",
+          pop: "#862923",
+          text: "#bfb5b4",
         },
         light: {
           bg: "#c0a99d",
           bgLight: "#E9DFD9",
           highlight: "#73000D",
-          secondary: "rgb(220, 166, 133)",
-          primary: "rgb(252, 238, 226)",
+          secondary: "#DCA685",
+          primary: "#FDEDE2",
+          transparent: "rgba(115,0,13, 0)",
         },
       },
     },

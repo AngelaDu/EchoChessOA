@@ -1,41 +1,48 @@
+"use server"
+
 import { sql } from "@vercel/postgres"
 import { GameModes } from "./constants"
 import { unstable_noStore } from "next/cache"
 
-export async function filterData(curTab, setFilteredData, pageNum) {
+export async function filterData(curTab, pageNum) {
   unstable_noStore()
 
-  // try {
-  //   var table
-  //   switch (curTab) {
-  //     case GameModes.CAMPAIGN:
-  //       table = "CAMPAIGN"
-  //       break
-  //     case GameModes.SKIRMISH:
-  //       table = "SKIRMISH"
-  //       break
-  //     case GameModes.ARENA:
-  //       table = "ARENA"
-  //       break
-  //     default:
-  //       console.log("game mode does not exist")
-  //   }
-
-  //   const data = await sql`SELECT * FROM ${table}
-  //         ORDER BY date DESC
-  //         LIMIT 5 OFFSET ${5 * pageNum};`
-
-  //   setFilteredData(data)
-  // } catch (error) {
-  //   console.error("Database Error:", error)
-  //   throw new Error("Failed to fetch latest data")
-  // }
   try {
-    console.log({
-      POSTGRES_URL: process.env.POSTGRES_URL,
-      POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING,
-    })
-    const data = await sql`SELECT * FROM ARENA`
+    var data
+    var count
+
+    if (curTab === GameModes.campaign) {
+      data = await sql`
+      SELECT * FROM campaign
+      ORDER BY score DESC
+      LIMIT 5 OFFSET ${pageNum * 5}`
+
+      count = await sql`
+      SELECT COUNT(*) as total_count FROM campaign
+      `
+    } else if (curTab === GameModes.skirmish) {
+      data = await sql`
+      SELECT * FROM skirmish
+      ORDER BY score DESC
+      LIMIT 5 OFFSET ${pageNum * 5}`
+
+      count = await sql`
+      SELECT COUNT(*) as total_count FROM skirmish
+      `
+    } else {
+      data = await sql`
+      SELECT * FROM arena
+      ORDER BY score DESC
+      LIMIT 5 OFFSET ${pageNum * 5}`
+
+      count = await sql`
+      SELECT COUNT(*) as total_count FROM arena
+      `
+    }
+
+    console.log(curTab)
+
+    return { data: data.rows, count: count.rows[0].total_count }
   } catch (error) {
     console.error("Database Error:", error)
     throw new Error("Failed to fetch latest data")
